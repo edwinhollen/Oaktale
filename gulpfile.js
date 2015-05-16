@@ -50,7 +50,6 @@ gulp.task('serve', function(){
 	.pipe(webserver({
 		livereload: false,
 		open: false,
-		//fallback: 'index.html',
 	}));
 });
 gulp.task('servewatch', ['build', 'serve', 'watch']);
