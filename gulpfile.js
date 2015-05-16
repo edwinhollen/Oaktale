@@ -30,8 +30,9 @@ gulp.task('compile:typescript', function (cb) {
 	gulp.src(sourcePath+'**/*.ts')
 	.pipe(tsc({
 		module: 'commonjs',
-		emitError: true,
-		out: 'oaktale.js'
+		emitError: false,
+		out: 'oaktale.js',
+		target: 'ES5'
 	}))
 	.pipe(gulp.dest(destinationPath));
 	cb();
