@@ -6,9 +6,11 @@ class Engine{
 	constructor(newConfig: EngineConfig){
 		// set up event listeners
 		this._config = newConfig;
+		this._scene = new GameScene(this._config);
+		window.requestAnimationFrame(this.loop);
 	}
 
-	loop(){
+	loop = () => {
 		window.requestAnimationFrame(this.loop);
 		this._scene.act(this._config);
 	}
