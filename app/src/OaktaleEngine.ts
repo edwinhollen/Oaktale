@@ -1,19 +1,35 @@
-module OaktaleEngine{
-	class GameContainer{
-		private _canvas: HTMLCanvasElement;
-		private _ctx: CanvasRenderingContext2D;
-		constructor(canvasElement: HTMLCanvasElement){
-			this._canvas = canvasElement;
-			this._ctx = <CanvasRenderingContext2D>canvasElement.getContext('2d');
-		}
+/// <reference path="references.ts"/>
+class Engine{
+	private _config: EngineConfig;
+	private _scene: Scene;
 
-		
-
-		get canvas(): HTMLCanvasElement{
-			return this._canvas;
-		}
-		get ctx(): CanvasRenderingContext2D{
-			return this._ctx;
-		}
+	constructor(newConfig: EngineConfig){
+		// set up event listeners
+		this._config = newConfig;
 	}
+
+	loop(){
+		window.requestAnimationFrame(this.loop);
+		this._scene.act(this._config);
+	}
+
+	get scene(): Scene{
+		return this._scene;
+	}
+	set scene(newScene: Scene){
+		this._scene = newScene;
+	}
+	
+
+	get config(): EngineConfig{
+		return this._config;
+	}
+
+
+}
+
+interface EngineConfig{
+	canvas: HTMLCanvasElement;
+	renderWidth: number;
+	renderHeight: number;
 }
