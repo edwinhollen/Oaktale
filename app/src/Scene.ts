@@ -1,9 +1,9 @@
 /// <reference path="references.ts"/>
 class Scene{
-	constructor(config: EngineConfig){
-
+	constructor(){
+		
 	}
-	public act(config: EngineConfig): void{
-		console.log('acting at', window.performance.now());
+	public render(): void{
+		
 	}
 }

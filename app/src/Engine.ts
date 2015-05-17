@@ -1,18 +1,19 @@
 /// <reference path="references.ts"/>
+
 class Engine{
-	private _config: EngineConfig;
+	static config: EngineConfig;
 	private _scene: Scene;
 
 	constructor(newConfig: EngineConfig){
 		// set up event listeners
-		this._config = newConfig;
-		this._scene = new GameScene(this._config);
+		Engine.config = newConfig;
+		this._scene = new GameScene();
 		window.requestAnimationFrame(this.loop);
 	}
 
 	loop = () => {
 		window.requestAnimationFrame(this.loop);
-		this._scene.act(this._config);
+		this._scene.render();
 	}
 
 	get scene(): Scene{
@@ -21,13 +22,6 @@ class Engine{
 	set scene(newScene: Scene){
 		this._scene = newScene;
 	}
-	
-
-	get config(): EngineConfig{
-		return this._config;
-	}
-
-
 }
 
 interface EngineConfig{

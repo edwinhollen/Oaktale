@@ -1,6 +1,11 @@
 /// <reference path="references.ts"/>
 class GameScene extends Scene{
-	constructor(config: EngineConfig){
-		super(config);
+    private _ces: ComponentEntitySystem;
+	constructor(){
+		super();
+        this._ces = new ComponentEntitySystem();
+	}
+	render(): void{
+		
 	}
 }
